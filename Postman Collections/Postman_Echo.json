@@ -2958,6 +2958,101 @@
             "description": "A simple `GET` request to `/time/subtract` to subtract units of time from the specified / current timestamp (as provided in the `years`, `months`, `days`, `hours`, `minutes`, `seconds`, and `milliseconds` query parameters).\n\nThis endpoint accepts `timestamp`, `locale`, `format`, and `strict` query parameters to construct the date time instance to check against.\n\nResponses are provided in JSON format, with a `difference` key to indicate the result. The response code is `200` for valid query parameters, and `400` otherwise.\n\n```\n{\n  difference: \"difference between (provided / current) and provided timestamps\"\n}\n```"
           },
           "response": []
+        },
+        {
+          "_postman_id": "b709b99c-3347-40fc-2c21-98ceb7f9e267",
+          "name": "Before comparisons",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var before = JSON.parse(responseBody).before;",
+                  "",
+                  "tests[\"Status code is 200\"] = responseCode.code === 200;",
+                  "tests[\"Comparsion was correct\"] = before === true;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "https://postman-echo.com/time/before?timestamp=2016-10-10&target=2017-10-10",
+              "protocol": "https",
+              "host": [
+                "postman-echo",
+                "com"
+              ],
+              "path": [
+                "time",
+                "before"
+              ],
+              "query": [
+                {
+                  "key": "timestamp",
+                  "value": "2016-10-10"
+                },
+                {
+                  "key": "target",
+                  "value": "2017-10-10"
+                }
+              ]
+            },
+            "description": "A simple `GET` request to `/time/before` to check if the provided timestamps is before a comparison `target` (query parameter).\n\nThis endpoint accepts `timestamp`, `locale`, `format`, `strict`, and `target` query parameters to construct the date time instance to check against.\n\nResponses are provided in JSON format, with a `before` key to indicate the result. The response code is `200` for valid query parameters, and `400` otherwise.\n\n```\n{\n  before: true/false\n}\n```"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "c38e8be7-1739-2108-1804-a8b171c75298",
+          "name": "Format timestamp",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var format = JSON.parse(responseBody).format;",
+                  "",
+                  "tests[\"Status code is 200\"] = responseCode.code === 200;",
+                  "tests[\"Formatted result is valid\"] = format === \"20\";",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "https://postman-echo.com/time/format?timestamp=2016-10-10&format=mm",
+              "protocol": "https",
+              "host": [
+                "postman-echo",
+                "com"
+              ],
+              "path": [
+                "time",
+                "format"
+              ],
+              "query": [
+                {
+                  "key": "timestamp",
+                  "value": "2016-10-10"
+                },
+                {
+                  "key": "format",
+                  "value": "mm"
+                }
+              ]
+            },
+            "description": "A simple `GET` request to `/time/format` to convert the timestamp to any desired valid format.\n\nThis endpoint accepts `timestamp`, `locale`, `format`, and `strict` query parameters to construct the date time instance to check against.\n\nResponses are provided in JSON format, with a `format` key to indicate the result. The response code is `200` for valid query parameters, and `400` otherwise.\n\n```\n{\n  format: \"formatted-timestamp\"\n}\n```"
+          },
+          "response": []
         }
       ]
     },
