@@ -2463,6 +2463,53 @@
               "body": "Wed, 11 Jan 2017 10:27:12 GMT"
             }
           ]
+        },
+        {
+          "_postman_id": "47f089f3-196e-fb13-fdf6-1d62f85ad96f",
+          "name": "After comparisons",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var after = JSON.parse(responseBody).after;",
+                  "",
+                  "tests[\"Status code is 200\"] = responseCode.code === 200;",
+                  "tests[\"Comparsion was correct\"] = after === false;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "https://postman-echo.com/time/after?timestamp=2016-10-10&target=2017-10-10",
+              "protocol": "https",
+              "host": [
+                "postman-echo",
+                "com"
+              ],
+              "path": [
+                "time",
+                "after"
+              ],
+              "query": [
+                {
+                  "key": "timestamp",
+                  "value": "2016-10-10"
+                },
+                {
+                  "key": "target",
+                  "value": "2017-10-10"
+                }
+              ]
+            },
+            "description": "A simple `GET` request to `/time/after` to check if the provided timestamps is after a comparison `target` (query parameter).\n\nThis endpoint accepts `timestamp`, `locale`, `format`, `strict`, and `target` query parameters to construct the date time instance to check against.\n\nResponses are provided in JSON format, with a `after` key to indicate the result. The response code is `200` for valid query parameters, and `400` otherwise.\n\n```\n{\n  after: true/false\n}\n```"
+          },
+          "response": []
         }
       ]
     },
