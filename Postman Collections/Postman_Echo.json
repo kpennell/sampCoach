@@ -3005,54 +3005,6 @@
             "description": "A simple `GET` request to `/time/before` to check if the provided timestamps is before a comparison `target` (query parameter).\n\nThis endpoint accepts `timestamp`, `locale`, `format`, `strict`, and `target` query parameters to construct the date time instance to check against.\n\nResponses are provided in JSON format, with a `before` key to indicate the result. The response code is `200` for valid query parameters, and `400` otherwise.\n\n```\n{\n  before: true/false\n}\n```"
           },
           "response": []
-        },
-        {
-          "_postman_id": "c38e8be7-1739-2108-1804-a8b171c75298",
-          "name": "Format timestamp",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "var format = JSON.parse(responseBody).format;",
-                  "",
-                  "tests[\"Status code is 200\"] = responseCode.code === 200;",
-                  "tests[\"Formatted result is valid\"] = format === \"20\";",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "https://postman-echo.com/time/format?timestamp=2016-10-10&format=mm",
-              "protocol": "https",
-              "host": [
-                "postman-echo",
-                "com"
-              ],
-              "path": [
-                "time",
-                "format"
-              ],
-              "query": [
-                {
-                  "key": "timestamp",
-                  "value": "2016-10-10"
-                },
-                {
-                  "key": "format",
-                  "value": "mm"
-                }
-              ]
-            },
-            "description": "A simple `GET` request to `/time/format` to convert the timestamp to any desired valid format.\n\nThis endpoint accepts `timestamp`, `locale`, `format`, and `strict` query parameters to construct the date time instance to check against.\n\nResponses are provided in JSON format, with a `format` key to indicate the result. The response code is `200` for valid query parameters, and `400` otherwise.\n\n```\n{\n  format: \"formatted-timestamp\"\n}\n```"
-          },
-          "response": []
         }
       ]
     },
@@ -3060,49 +3012,7 @@
       "_postman_id": "084b21bd-d250-180b-5ed8-94cfaca39fdd",
       "name": "Utilities / Postman Collection",
       "description": "",
-      "item": [
-        {
-          "_postman_id": "dc8d6e30-c1cf-9d98-4b95-fc1ca6196511",
-          "name": "Transform collection from format v2 to v1",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"info\": {\n    \"name\": \"Sample Postman Collection\",\n    \"schema\": \"https://schema.getpostman.com/json/collection/v2.0.0/collection.json\",\n    \"description\": \"A sample collection to demonstrate collections as a set of related requests\"\n  },\n\n  \"item\": [{\n    \"name\": \"A simple GET request\",\n    \"event\": [{\n      \"listen\": \"test\",\n      \"script\": {\n        \"type\": \"text/javascript\",\n        \"exec\": [\"tests['response code is 200'] = (responseCode.code === 200);\"]\n      }\n    }],\n    \"request\": {\n      \"url\": \"https://postman-echo.com/get?source=newman-sample-github-collection\",\n      \"method\": \"GET\"\n    }\n  }, {\n    \"name\": \"A simple POST request\",\n    \"request\": {\n      \"url\": \"https://postman-echo.com/post\",\n      \"method\": \"POST\",\n      \"header\": [{\n        \"key\": \"Content-Type\",\n        \"value\": \"text/plain\"\n      }],\n      \"body\": {\n        \"mode\": \"raw\",\n        \"raw\": \"Duis posuere augue vel cursus pharetra. In luctus a ex nec pretium...\"\n      }\n    }\n  }, {\n    \"name\": \"A simple POST request with JSON body\",\n    \"request\": {\n      \"url\": \"https://postman-echo.com/post\",\n      \"method\": \"POST\",\n      \"header\": [{\n        \"key\": \"Content-Type\",\n        \"value\": \"application/json\"\n      }],\n      \"body\": {\n        \"mode\": \"raw\",\n        \"raw\": \"{\\\"text\\\":\\\"Duis posuere augue vel cursus pharetra. In luctus a ex nec pretium...\\\"}\"\n      }\n    }\n  }]\n}"
-            },
-            "url": {
-              "raw": "https://postman-echo.com/transform/collection?from=2&to=1",
-              "protocol": "https",
-              "host": [
-                "postman-echo",
-                "com"
-              ],
-              "path": [
-                "transform",
-                "collection"
-              ],
-              "query": [
-                {
-                  "key": "from",
-                  "value": "2"
-                },
-                {
-                  "key": "to",
-                  "value": "1"
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        }
-      ]
+      "item": []
     },
     {
       "_postman_id": "1a535d03-c94f-5b86-573f-2283cf6e03f0",
